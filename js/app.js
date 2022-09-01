@@ -8,8 +8,16 @@ const loadphone = (searchText) => {
 const displayphones = phones => {
     const phonesContainer = document.getElementById('phone-container');
     phonesContainer.innerText = '';
-    // Display only 30 phones
-    phones = phones.slice(0, 30);
+    // Display only 20 phones
+    const showAll = document.getElementById('show-all');
+    if (phones.length > 20) {
+        phones = phones.slice(0, 20);
+        showAll.classList.remove('d-none');
+    }
+    else {
+        showAll.classList.add('d-none');
+    }
+
 
     // Display No Phone Found
     const noPhone = document.getElementById('no-found-message');
@@ -48,3 +56,4 @@ document.getElementById('btn-search').addEventListener('click', function () {
 })
 
 loadphone('a');
+
